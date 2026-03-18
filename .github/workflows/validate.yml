@@ -1,0 +1,21 @@
+name: validate
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate bash scripts
+        run: |
+          bash -n src/oc-profiles.sh
+          bash -n src/oc-token-push.sh
+          bash -n install.sh
+      - name: Validate node script
+        run: node --check src/oc-refresh.mjs

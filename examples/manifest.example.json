@@ -1,0 +1,43 @@
+{
+  "providers": {
+    "anthropic": {
+      "profiles": {
+        "account-a": { "label": "account-a@example.com" },
+        "account-b": { "label": "account-b@example.com" }
+      },
+      "active": "account-a"
+    },
+    "openai": {
+      "profiles": {
+        "default": { "label": "default@example.com" }
+      },
+      "active": "default"
+    },
+    "google": {
+      "profiles": {
+        "default": { "label": "shared API key" }
+      },
+      "active": "default"
+    },
+    "litellm": {
+      "profiles": {
+        "default": { "label": "shared API key" }
+      },
+      "active": "default"
+    }
+  },
+  "servers": {
+    "server-a": {
+      "anthropic": "account-a",
+      "openai": "default",
+      "google": "default",
+      "litellm": "default"
+    },
+    "server-b": {
+      "anthropic": "account-b",
+      "openai": "default",
+      "google": "default",
+      "litellm": "default"
+    }
+  }
+}

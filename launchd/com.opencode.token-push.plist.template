@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.opencode.token-push</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>__OC_HOME__/profiles/oc-token-push.sh</string>
+    </array>
+    <key>WatchPaths</key>
+    <array>
+        <string>__OPENCODE_HOME__/auth.json</string>
+    </array>
+    <key>StartInterval</key>
+    <integer>3600</integer>
+    <key>ThrottleInterval</key>
+    <integer>60</integer>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>__OC_HOME__/profiles/token-push-stdout.log</string>
+    <key>StandardErrorPath</key>
+    <string>__OC_HOME__/profiles/token-push-stderr.log</string>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/usr/bin:/bin:/opt/homebrew/bin</string>
+        <key>HOME</key>
+        <string>__HOME__</string>
+    </dict>
+</dict>
+</plist>

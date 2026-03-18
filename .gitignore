@@ -1,0 +1,10 @@
+profiles/
+*.log
+*.tmp
+*.lock
+.remote-status.json
+auth.json
+*.local.json
+node_modules/
+.DS_Store
+.env
