@@ -7,7 +7,7 @@ This repository extracts a local automation setup into a reusable public package
 - inactive Anthropic OAuth refresh on the local machine
 - access-only deployment to remote servers
 - remote verification via Anthropic models endpoint
-- launchd-based token propagation for macOS
+- launchd/systemd-based token propagation
 
 ## What problem it solves
 
@@ -42,7 +42,7 @@ If you use multiple Claude/OpenCode accounts and multiple remote servers, this t
 ## Install
 
 ```bash
-git clone https://github.com/YOUR_GITHUB_USERNAME/opencode-auth-profiles.git
+git clone https://github.com/seokmogu/opencode-auth-profiles.git
 cd opencode-auth-profiles
 ./install.sh
 ```
@@ -109,7 +109,9 @@ bash -n src/oc-token-push.sh
 node --check src/oc-refresh.mjs
 ```
 
-## macOS scheduler
+## Scheduler
+
+### macOS
 
 `install.sh` writes a launchd plist template into `~/Library/LaunchAgents/com.opencode.token-push.plist`.
 
@@ -120,6 +122,24 @@ launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.opencode.token-push.
 ```
 
 The scheduler reacts to `auth.json` changes and also runs hourly.
+
+### Linux
+
+On Linux, `install.sh` writes user-level systemd units into `~/.config/systemd/user/`.
+
+Enable them with:
+
+```bash
+systemctl --user daemon-reload
+systemctl --user enable --now opencode-token-push.timer
+```
+
+Check timer state with:
+
+```bash
+systemctl --user status opencode-token-push.timer
+systemctl --user list-timers | grep opencode-token-push
+```
 
 ## Known limitation
 

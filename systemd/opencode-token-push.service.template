@@ -1,0 +1,8 @@
+[Unit]
+Description=OpenCode token push
+
+[Service]
+Type=oneshot
+Environment=HOME=__HOME__
+Environment=PATH=/usr/local/bin:/usr/bin:/bin
+ExecStart=/bin/bash __OC_HOME__/profiles/oc-token-push.sh
